@@ -1,0 +1,338 @@
+!DOCTYPE html>
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;AgriPulse – Practical technology for a growing world&lt;/title&gt;
+  &lt;style&gt;
+    :root {
+      --forest-green: #2d5a27;
+      --lime: #7cb342;
+      --off-white: #f5f5f0;
+      --dark: #1a1a1a;
+      --white: #ffffff;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--dark);
+      background: var(--off-white);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--forest-green);
+      color: var(--white);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--lime); }
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+    nav a:hover { opacity: 1; text-decoration: underline; }
+    .hero {
+      background: linear-gradient(135deg, var(--forest-green) 0%, #3a7a32 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      opacity: 0.92;
+    }
+    .tagline {
+      font-size: 1.4rem;
+      color: var(--lime);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--dark);
+      padding: 0.85rem 2.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta-btn:hover {
+      background: #8bc34a;
+      transform: translateY(-2px);
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 2rem;
+      color: var(--forest-green);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    section h3 {
+      font-size: 1.3rem;
+      color: var(--forest-green);
+      margin: 1rem 0 0.5rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+    .service-card:hover { transform: translateY(-4px); }
+    .service-card .icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .service-card p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .step {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      position: relative;
+    }
+    .step-num {
+      background: var(--forest-green);
+      color: var(--white);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 auto 1rem;
+    }
+    .step h3 { color: var(--forest-green); margin-bottom: 0.5rem; }
+    .supplier-section {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      margin-top: 1rem;
+    }
+    .supplier-section p {
+      color: #444;
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+    .supplier-section ul {
+      margin: 1rem 0 1rem 1.5rem;
+      color: #444;
+    }
+    .supplier-section li { margin-bottom: 0.5rem; }
+    .contact-section {
+      text-align: center;
+      background: var(--forest-green);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 3rem 2.5rem;
+      margin-top: 1rem;
+    }
+    .contact-section h2 { color: var(--white); }
+    .contact-section p {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+    .email-btn {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--dark);
+      padding: 0.85rem 2.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+    }
+    .email-btn:hover { background: #8bc34a; }
+    .direct-email {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+    .direct-email a {
+      color: var(--lime);
+      text-decoration: underline;
+    }
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      margin-top: 3rem;
+    }
+    footer p { max-width: 700px; margin: 0 auto; line-height: 1.7; }
+    .divider {
+      height: 2px;
+      background: var(--lime);
+      margin: 0 auto;
+      width: 60px;
+      border-radius: 1px;
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .hero { padding: 3rem 1.5rem; }
+      section { padding: 3rem 1.5rem; }
+      header { flex-direction: column; gap: 0.5rem; text-align: center; }
+      nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem; }
+      nav a { margin-left: 0; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.6rem; }
+      .hero p { font-size: 1rem; }
+      .services-grid, .steps { grid-template-columns: 1fr; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;div class="logo"&gt;Agri&lt;span&gt;Pulse&lt;/span&gt;&lt;/div&gt;
+    &lt;nav&gt;
+      &lt;a href="#solutions"&gt;Solutions&lt;/a&gt;
+      &lt;a href="#how-it-works"&gt;How It Works&lt;/a&gt;
+      &lt;a href="#partners"&gt;Partners&lt;/a&gt;
+      &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;section class="hero"&gt;
+    &lt;p class="tagline"&gt;Practical technology for a growing world&lt;/p&gt;
+    &lt;h1&gt;Helping growers discover the right agricultural technology&lt;/h1&gt;
+    &lt;p&gt;We connect you with proven solutions for irrigation, greenhouse systems, robotics, and data-driven farming — sourced from trusted suppliers around the globe.&lt;/p&gt;
+    &lt;a href="#contact" class="cta-btn"&gt;Get in Touch&lt;/a&gt;
+  &lt;/section&gt;
+
+  &lt;section id="solutions"&gt;
+    &lt;h2&gt;Our Solutions&lt;/h2&gt;
+    &lt;div class="divider"&gt;&lt;/div&gt;
+    &lt;p style="text-align:center; max-width:600px; margin:1rem auto 2rem; color:#555;"&gt;Explore curated technology areas where we can help identify and evaluate the right tools for your operation.&lt;/p&gt;
+    &lt;div class="services-grid"&gt;
+      &lt;div class="service-card"&gt;
+        &lt;div class="icon"&gt;💧&lt;/div&gt;
+        &lt;h3&gt;Irrigation &amp; Water&lt;/h3&gt;
+        &lt;p&gt;Efficient water management solutions — from drip irrigation and sprinkler systems to smart controllers and water quality monitoring.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="service-card"&gt;
+        &lt;div class="icon"&gt;🏡&lt;/div&gt;
+        &lt;h3&gt;Greenhouse Systems&lt;/h3&gt;
+        &lt;p&gt;Climate-controlled growing environments with automated ventilation, shading, heating, and CO₂ enrichment technologies.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="service-card"&gt;
+        &lt;div class="icon"&gt;🤖&lt;/div&gt;
+        &lt;h3&gt;Robotics &amp; Machinery&lt;/h3&gt;
+        &lt;p&gt;Autonomous tractors, harvest robots, drone monitoring, and precision agriculture equipment to improve productivity and reduce labour costs.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="service-card"&gt;
+        &lt;div class="icon"&gt;📊&lt;/div&gt;
+        &lt;h3&gt;Sensors &amp; Data&lt;/h3&gt;
+        &lt;p&gt;Soil moisture, weather stations, satellite imagery, and farm management software — turning data into actionable insights for better decisions.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section id="how-it-works"&gt;
+    &lt;h2&gt;How It Works&lt;/h2&gt;
+    &lt;div class="divider"&gt;&lt;/div&gt;
+    &lt;p style="text-align:center; max-width:600px; margin:1rem auto 2rem; color:#555;"&gt;A simple, transparent process designed to save you time and connect you with the right suppliers.&lt;/p&gt;
+    &lt;div class="steps"&gt;
+      &lt;div class="step"&gt;
+        &lt;div class="step-num"&gt;1&lt;/div&gt;
+        &lt;h3&gt;Tell Us&lt;/h3&gt;
+        &lt;p&gt;Share your farming needs and challenges. Whether you're looking to upgrade irrigation, automate greenhouse operations, or explore robotic solutions — we want to understand what matters to you.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="step"&gt;
+        &lt;div class="step-num"&gt;2&lt;/div&gt;
+        &lt;h3&gt;Explore Options&lt;/h3&gt;
+        &lt;p&gt;We research and present technology options from our supplier network that match your specific requirements, budget, and scale of operation.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="step"&gt;
+        &lt;div class="step-num"&gt;3&lt;/div&gt;
+        &lt;h3&gt;Connect Directly&lt;/h3&gt;
+        &lt;p&gt;We introduce you to the most suitable supplier so you can negotiate, order, and implement the technology directly — with full transparency at every step.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section id="partners"&gt;
+    &lt;h2&gt;Supplier Collaboration&lt;/h2&gt;
+    &lt;div class="divider"&gt;&lt;/div&gt;
+    &lt;div class="supplier-section"&gt;
+      &lt;p&gt;AgriPulse works with agricultural technology suppliers to bring relevant solutions to growers. Our collaboration framework is built on clarity and mutual respect:&lt;/p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;Clear lead ownership&lt;/strong&gt; — When we introduce a grower to a supplier, the supplier takes full responsibility for follow-up and lead management. There is no ambiguity about who owns the relationship.&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Written commission terms&lt;/strong&gt; — Any commission arrangements are confirmed in writing before we make introductions. No verbal agreements, no hidden terms. If there is no written commission agreement in place, no commission is implied or expected.&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Grower-first approach&lt;/strong&gt; — We recommend suppliers based on fit and reliability, not on commission rates. Our priority is connecting you with solutions that actually work for your farm.&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p&gt;If you are a supplier interested in collaborating, please reach out to discuss terms openly and in writing.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section id="contact"&gt;
+    &lt;h2&gt;Contact&lt;/h2&gt;
+    &lt;div class="divider"&gt;&lt;/div&gt;
+    &lt;div class="contact-section"&gt;
+      &lt;p&gt;Ready to explore agricultural technology that fits your operation?&lt;/p&gt;
+      &lt;p&gt;Send us an email and let's start the conversation.&lt;/p&gt;
+      &lt;a href="mailto:sh.chaara@gmail.com" class="email-btn"&gt;✉ sh.chaara@gmail.com&lt;/a&gt;
+      &lt;p class="direct-email"&gt;Or reach us directly at: &lt;a href="mailto:sh.chaara@gmail.com"&gt;sh.chaara@gmail.com&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; AgriPulse is an early-stage project. Nothing on this website constitutes a supplier partnership, endorsement, or commission arrangement unless explicitly confirmed in writing. We are still building our network and refining our approach. All information is provided in the spirit of supporting growers — with full transparency about where we stand.&lt;/p&gt;
+    &lt;p style="margin-top:1rem;"&gt;&amp;copy; 2026 AgriPulse. All rights reserved.&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
