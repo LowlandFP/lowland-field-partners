@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lowlandfp.github.io/lowland-field-partners/sitemap.xml
